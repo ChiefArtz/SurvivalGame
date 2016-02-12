@@ -1163,7 +1163,7 @@ class Main extends PluginBase implements Listener
 		if(isset($this->players[$event->getPlayer()->getName()]))
 		{	
 			unset($this->players[$event->getPlayer()->getName()]);
-			$this->ClearInv($event->getPlayer());
+                        $event->getInventory()->setContents(array(Item::get(0, 0, 0)));
 			$event->getPlayer()->sendMessage(TextFormat::RED. "[{$this->getConfig()->get("prefix")}]".$event->getPlayer()->getName()." left the match.");
 			$this->changeStatusSign();
 			if($this->gameStatus==1 && count($this->players)<2)
